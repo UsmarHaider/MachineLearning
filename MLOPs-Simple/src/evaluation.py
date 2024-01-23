@@ -11,16 +11,15 @@ class Evaluation(ABC):
 
         pass
 
-# class MSE(Evaluation):
-#
-#     def calculate_score(self, y_true:np.ndarray, y_pred:np.ndarray):
-#         try:
-#             logging.info("Calculating MSE score")
-#             mse = np.mean((y_true - y_pred)**2)
-#             return mse
-#         except Exception as e:
-#             logging.error("Error in calculating MSE score")
-#             raise e
+class MSE(Evaluation):
+    def calculate_score(self, y_true:np.ndarray, y_pred:np.ndarray)-> float:
+        try:
+            logging.info("Calculating MSE score")
+            mse = mean_squared_error(y_true, y_pred)
+            return mse
+        except Exception as e:
+            logging.error("Error in calculating MSE score")
+            raise e
 
 class R2(Evaluation):
 
